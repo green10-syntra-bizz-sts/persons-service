@@ -1,0 +1,12 @@
+.result {
+   list-style-type: none;
+   color: forestgreen;
+   margin-top: 6px;
+}
+div.kolom {
+   float: left;
+   width: 24em;
+   margin-right: 2em;
+   border-right: thick solid  #d6b000;
+   height: 24em;
+}

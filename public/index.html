@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bekende personen</title>
+    <link href = "styles.css" rel = "stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <div class="kolom">
+            <h1>Bekende personen</h1>
+            <button type = "button" id = "get-persons" v-on:click="fetchAPIData">Haal de personen op</button>
+            <div v-if = "responseAvailable == true" id="bekende_personen">
+                <ul id="v-for-object" class="result">
+                    <li v-for="person in result">
+                        {{person.id}} -- {{person.firstName}} {{person.lastName}} -- {{person.eMailAddress}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="kolom">
+            <h1>Persoon toevoegen</h1>
+            <div id="mainform">
+                Voornaam: <input type="text" id="voornaam" name="voornaam"
+                            v-model="personData.firstName" /> <br/>
+                Familienaam: <input type="text" id="familienaam" name="familienaam"
+                            v-model="personData.lastName" /> <br/>
+                E-mailadres: <input type="text" id="emailadres" name="emailadres"
+                            v-model="personData.eMailAddress" /> <br/><br/>
+                <button type = "button" id = "add-person" v-on:click="submitForm">Voeg persoon toe</button>
+                <div v-if = "responseAvailableCreation == true" class="result" id="resultaat_toevoeging">
+                    Persoon gecreëerd met id {{result.id}}
+                </div>
+            </div>
+        </div>
+        <div class="kolom">
+            <h1>Persoon opzoeken</h1>
+            <div id="searchform">
+                E-mailadres: <input type="text" id="emailadres" name="emailadres"
+                            v-model="personData.eMailAddress" /> <br/><br/>
+                <button type = "button" id = "search-person" v-on:click="searchForm">Zoek persoon</button>
+                <div v-if = "responseAvailableSearch == true" class="result">
+                    <h3>Gevonden: {{result}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Vue and Custom JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src = "scripts.js"></script>
+</html>
