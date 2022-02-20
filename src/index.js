@@ -75,7 +75,7 @@ if (mongoDBPassword===undefined) {
     // MongoDBPassword has been retrieved from environment variable, Express can start listening at once
     app.listen(5000, () => {
         service = new Service(mongoDBPassword);
-        console.log('\nExample app listening on port 3000!');
+        console.log('\nExample app listening on port 5000!');
     });
 }
 
