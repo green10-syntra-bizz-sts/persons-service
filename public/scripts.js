@@ -1,4 +1,4 @@
-const BASE_URL_API= "http://localhost:3000/api/v1/persons/";
+const BASE_URL_API= "http://localhost:5000/api/v1/persons/";
 
 const app = new Vue({
     el: '#main',

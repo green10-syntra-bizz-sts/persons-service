@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const jsonParser = express.json();
 app.use(jsonParser)
-app.use(express.static('../public'));
+app.use(express.static('public'));
 
 const {Service} = require("../src/service/Service.js");
 
@@ -66,16 +66,14 @@ if (mongoDBPassword===undefined) {
             mongoDBPassword = answer;
             rl.close();
             // Now the Express server can start listening
-            app.listen(5000, () => {
-                service = new Service(mongoDBPassword);
-                console.log('\nExample app listening on port 3000!');
-            });
         });
 } else {
     // MongoDBPassword has been retrieved from environment variable, Express can start listening at once
-    app.listen(5000, () => {
-        service = new Service(mongoDBPassword);
-        console.log('\nExample app listening on port 5000!');
-    });
 }
+
+app.listen(5000, () => {
+    service = new Service(mongoDBPassword);
+    console.log('\nExample app listening on port 5000!');
+});
+
 
