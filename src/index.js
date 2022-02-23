@@ -73,11 +73,11 @@ if (mongoDBPassword===undefined) {
             mongoDBPassword = answer;
             rl.close();
             // Now the Express server can start listening
-            startAppListener();
+            startAppListener(5000);
         });
 } else {
     // MongoDBPassword has been retrieved from environment variable, Express can start listening at once
-    startAppListener();
+    startAppListener(5000);
 }
 
 
