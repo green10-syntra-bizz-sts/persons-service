@@ -58,6 +58,13 @@ app.delete('/api/v1/persons', async (req, res) => {
     res.send(replyObj);
 })
 
+function startAppListener(port) {
+    app.listen(port, () => {
+        service = new Service(mongoDBPassword);
+        console.log('\nExample app listening on port '+port+'!');
+    });
+}
+
 if (mongoDBPassword===undefined) {
         const readline = require('readline');
         const rl = readline.createInterface(process.stdin, process.stdout);
@@ -66,14 +73,12 @@ if (mongoDBPassword===undefined) {
             mongoDBPassword = answer;
             rl.close();
             // Now the Express server can start listening
+            startAppListener();
         });
 } else {
     // MongoDBPassword has been retrieved from environment variable, Express can start listening at once
+    startAppListener();
 }
 
-app.listen(5000, () => {
-    service = new Service(mongoDBPassword);
-    console.log('\nExample app listening on port 5000!');
-});
 
 
